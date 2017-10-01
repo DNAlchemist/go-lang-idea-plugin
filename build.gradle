@@ -148,6 +148,9 @@ private void downloadAndUnzip(url, sourceDir, targetDir) {
       from "$tmpPath/$sourceDir"
       into "$testDataPath/$targetDir"
     }
+    if (markerFile.parentFile && !markerFile.parentFile.exists()) {
+      assert markerFile.parentFile.mkdir()
+    }
     markerFile.createNewFile()
   }
   delete file(tmpPath)
